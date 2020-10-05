@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :students
+  devise_for :teachers
+  root to: "items#index"
+  resources :exams do
+    # resources :transactions, only: [:index, :new, :create]
+  end
 end

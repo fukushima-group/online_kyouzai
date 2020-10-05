@@ -19,10 +19,11 @@
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|email|string|null: false|
 |school_year_id|integer|null: false|
 |club_id|integer|null: false|
 |purpose|text|null: false|
+|email|string|null: false|
+|password|string|null: false|
 |teacher_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :teacher
