@@ -1,0 +1,16 @@
+<div class='header'>
+  <ul class='header-lists'>
+    <% if teacher_signed_in? %>
+      <li><%= link_to current_teacher.nickname, "#", class: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_teacher_session_path, method: :delete, class: "logout" %></li>
+    <% elsif student_signed_in? %>
+      <li><%= link_to current_student.nickname, "#", class: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_student_session_path, method: :delete, class: "logout" %></li>
+    <% else %>
+      <li><%= link_to '先生　ログイン', new_teacher_session_path, class: "login" %></li>
+      <li><%= link_to '先生　新規登録', new_teacher_registration_path, class: "sign-up" %></li>
+      <li><%= link_to '生徒　ログイン', new_student_session_path, class: "login" %></li>
+      <li><%= link_to '生徒　新規登録', new_student_registration_path, class: "sign-up" %></li>
+    <% end %>
+  </ul>
+</div>
