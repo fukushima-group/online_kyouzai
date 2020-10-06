@@ -10,7 +10,7 @@ class DeviseCreateStudents < ActiveRecord::Migration[6.0]
       t.string     :last_name_kana,     null: false
       t.string     :email,              null: false, default: ""
       t.string     :encrypted_password, null: false, default: ""
-      t.integer    :school_year_id      null: false
+      t.integer    :school_year_id,     null: false
       t.integer    :club_id,            null: false
       t.text       :purpose,            null: false
       t.references :teacher,            null: false, foreign_key: true
