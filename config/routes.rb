@@ -1,3 +1,22 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  devise_for :students, controllers: {
+    sessions:      'students/sessions',
+    passwords:     'students/passwords',
+    registrations: 'students/registrations'
+  }
+  resource :students, only: [:show]
+
+
+  devise_for :teachers, controllers: {
+    sessions:      'teachers/sessions',
+    passwords:     'teachers/passwords',
+    registrations: 'teachers/registrations'
+  }
+  resource :teachers, only: [:show]
+
+  root to: "exams#index"
+  resources :exams do
+    # resources :transactions, only: [:index, :new, :create]
+  end
 end
