@@ -1,6 +1,6 @@
 class ExamsController < ApplicationController
 
   def index
-    @exams = Exams.all.order(created_at: :desc)
+    @exams = Exam.all.order(created_at: :desc)
   end
 end
