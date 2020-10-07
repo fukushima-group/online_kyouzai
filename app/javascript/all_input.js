@@ -3,37 +3,33 @@ window.addEventListener("DOMContentLoaded", () => {
   const params = path.replace(/items/g, '').replace(/transactions/g, '').replace(/\//g, '');
   const button = document.getElementById("button");
   console.log(path)
-  // 商品出品
+  // 生徒新規登録
   if (path == "/students/sign_up") {
     button.addEventListener("click", (e) => {
       e.preventDefault();
-      document.getElementById("student_first_name").value = "田中";
-      document.getElementById("student_last_name").value = "太郎";
-      document.getElementById("student_first_name_kana").value = "タナカ";
-      document.getElementById("student_last_name_kana").value = "タロウ";
-      document.getElementById("student_email").value = "test@111";
+      document.getElementById("student_first_name").value = "中学";
+      document.getElementById("student_last_name").value = "二郎";
+      document.getElementById("student_first_name_kana").value = "チュウガク";
+      document.getElementById("student_last_name_kana").value = "ジロウ";
+      document.getElementById("student_email").value = "test@222";
       const school_year = document.getElementById("student-school-year").options;
       school_year[1].selected = true ;
-      const club = document.getElementById("student-club-select").options;
-      club[1].selected = true ;
+      const clubs = document.getElementById("student-club-select").options;
+      clubs[1].selected = true ;
       document.getElementById("student_purpose").value = "目標は学年１位です";
+      const teachers = document.getElementById("teacher-select").options;
+      teachers[1].selected = true ;
     })
   }
-  // 新規登録
-  if (path == "/users/sign_up") {
-    button.addEventListener("click", () => {
-      document.getElementById("nickname").value = "テスト太郎";
-      document.getElementById("email").value = "test@111";
-      document.getElementById("first-name").value = "田中";
-      document.getElementById("last-name").value = "太郎";
-      document.getElementById("first-name-kana").value = "タナカ";
-      document.getElementById("last-name-kana").value = "タロウ";
-      const birth1 = document.getElementById("user_birth_date_1i").options;
-      birth1[1].selected = true ;
-      const birth2 = document.getElementById("user_birth_date_2i").options;
-      birth2[1].selected = true ;
-      const birth3 = document.getElementById("user_birth_date_3i").options;
-      birth3[1].selected = true ;
+  // 先生新規登録
+  if (path == "/teachers/sign_up") {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("teacher_first_name").value = "先生";
+      document.getElementById("teacher_last_name").value = "太郎";
+      document.getElementById("teacher_first_name_kana").value = "センセイ";
+      document.getElementById("teacher_last_name_kana").value = "タロウ";
+      document.getElementById("teacher_email").value = "test@111";
     })
   }
   // 商品購入
