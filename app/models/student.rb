@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -25,6 +26,9 @@ class Student < ApplicationRecord
     validates :club_id
     validates :purpose
   end
+
+  belongs_to_active_hash :school_year
+  belongs_to_active_hash :club
 
   belongs_to :teacher
   has_many :records

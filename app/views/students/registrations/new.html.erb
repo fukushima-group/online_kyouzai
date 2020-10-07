@@ -4,6 +4,26 @@
   <%= render "students/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_area :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_area :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %><br />
+    <%= f.text_area :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_kana %><br />
+    <%= f.text_area :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -19,6 +39,21 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :school_year_id %><br />
+    <%= f.collection_select(:school_year_id, SchoolYear.all, :id, :name, {}, {class:"select-box", id:"student-school-year"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :club_id %><br />
+    <%= f.collection_select(:club_id, Club.all, :id, :name, {}, {class:"select-box", id:"student-club-select"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :purpose %><br />
+    <%= f.text_area :purpose, autofocus: true, autocomplete: "purpose" %>
   </div>
 
   <div class="actions">
