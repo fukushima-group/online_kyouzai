@@ -1,9 +1,9 @@
 <ul class='header-lists'>
   <% if teacher_signed_in? %>
-    <li><%= link_to current_teacher.first_name, "#", class: "teacher-name" %></li>
+    <li><%= link_to current_teacher.first_name, "/teachers/#{current_teacher.id}", class: "teacher-name" %></li>
     <li><%= link_to 'ログアウト', destroy_teacher_session_path, method: :delete, class: "logout" %></li>
   <% elsif student_signed_in? %>
-    <li><%= link_to current_student.first_name, "#", class: "student-name" %></li>
+    <li><%= link_to current_student.first_name, "/students/#{current_student.id}", class: "student-name" %></li>
     <li><%= link_to 'ログアウト', destroy_student_session_path, method: :delete, class: "logout" %></li>
   <% else %>
     <li><%= link_to '先生用ログイン', new_teacher_session_path, class: "login" %></li>

@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
       document.getElementById("student_last_name").value = "二郎";
       document.getElementById("student_first_name_kana").value = "チュウガク";
       document.getElementById("student_last_name_kana").value = "ジロウ";
-      document.getElementById("student_email").value = "test@222";
+      document.getElementById("student_email").value = "student@111";
       const school_year = document.getElementById("student-school-year").options;
       school_year[1].selected = true ;
       const clubs = document.getElementById("student-club-select").options;
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
       document.getElementById("teacher_last_name").value = "太郎";
       document.getElementById("teacher_first_name_kana").value = "センセイ";
       document.getElementById("teacher_last_name_kana").value = "タロウ";
-      document.getElementById("teacher_email").value = "test@111";
+      document.getElementById("teacher_email").value = "teacher@111";
     })
   }
   // 商品購入

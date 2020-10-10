@@ -38,7 +38,27 @@ class Students::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  def show
+    @student = current_student
+  end
+
+  def student_profile_edit
+  end
+
+  def profile_update
+    current_student.assign_attributes(account_update_params)
+    if current_student.save
+      redirect_to student_registration_path, notice: 'プロフィールを更新しました'
+    else
+      render "student_profile_edit"
+    end
+  end
+
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
