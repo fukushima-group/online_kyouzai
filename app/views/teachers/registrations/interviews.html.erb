@@ -1,0 +1,9 @@
+<% @student.interviews.each_with_index do |interview, i| %>
+  <div class="list">
+    <%= "第#{i + 1}回" %>
+    <%= link_to "編集する", edit_interview_path %>
+    <br>
+    <%= interview.content%>
+  </div>
+<% end %>
+<%= link_to "新しい面談内容を登録する", new_interview_path(@student) %>

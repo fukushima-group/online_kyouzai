@@ -32,5 +32,5 @@ class Student < ApplicationRecord
 
   belongs_to :teacher
   has_many :records
-  has_one :interviews
+  has_many :interviews
 end

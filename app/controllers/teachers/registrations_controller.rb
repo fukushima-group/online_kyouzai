@@ -38,6 +38,10 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def interviews
+    @student = Student.find(params[:id])
+  end
+
   def show
     @teacher = current_teacher
   end
