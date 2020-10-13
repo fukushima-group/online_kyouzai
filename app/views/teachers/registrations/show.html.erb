@@ -13,7 +13,7 @@
 <h3>担当生徒</h3>
 <% @teacher.students.each do |student| %>
   <div class="list">
-    <%= link_to student.first_name, "/students/#{student.id}" %>
+    <%= link_to student.first_name, "/teachers/#{current_teacher.id}/student_details/#{student.id}" %>
   </div>
 <% end %>
 

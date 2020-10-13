@@ -42,6 +42,10 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
     @teacher = current_teacher
   end
 
+  def student_details
+    @student = Student.find(params[:id])
+  end
+
   def teacher_profile_edit
   end
 

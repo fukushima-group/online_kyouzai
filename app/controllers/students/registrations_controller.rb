@@ -39,11 +39,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
   # end
 
   def show
-    if current_student.present?
-      @student = current_student
-    else
-      @student = Student.find(params[:id])
-    end
+    @student = current_student
   end
 
   def student_profile_edit
