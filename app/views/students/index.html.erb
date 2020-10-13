@@ -1,0 +1,13 @@
+<h1>
+  生徒検索
+</h1>
+<%= search_form_for @p, url: search_students_path do |f| %>
+  <%= f.label :first_name_eq, '生徒情報' %>
+
+  <%= f.collection_select :school_year_id_eq, SchoolYear.where.not(id: 0), :id, :name,  include_blank: '指定なし' %>
+  <%= f.collection_select :club_id_eq, Club.where.not(id: 0), :id, :name, include_blank: '指定なし' %>
+  <%= f.collection_select :teacher_id_eq, Teacher.all, :id, :first_name, include_blank: '指定なし' %>
+
+  <br>
+  <%= f.submit '検索' %>
+<% end %>

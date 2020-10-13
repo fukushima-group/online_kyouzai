@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  root to: "exams#index"
+  resources :exams do
+    # resources :transactions, only: [:index, :new, :create]
+  end
+  
+  resources :students do
+    collection do
+      get :search
+    end
+  end
 
   devise_for :students, controllers: {
     sessions:      'students/sessions',
@@ -11,9 +21,6 @@ Rails.application.routes.draw do
     get 'student_profile_edit', to: 'students/registrations#student_profile_edit', as: 'student_profile_edit'
     patch 'student_profile_update', to: 'students/registrations#student_profile_update', as: 'student_profile_update'
   end
-
-  # resource :students, only: [:show]
-
 
   devise_for :teachers, controllers: {
     sessions:      'teachers/sessions',
@@ -28,10 +35,7 @@ Rails.application.routes.draw do
     patch 'teacher_profile_update', to: 'teachers/registrations#teacher_profile_update', as: 'teacher_profile_update'
   end
 
-  # resource :teachers, only: [:show]
 
-  root to: "exams#index"
-  resources :exams do
-    # resources :transactions, only: [:index, :new, :create]
-  end
+
+
 end
