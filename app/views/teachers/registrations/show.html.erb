@@ -12,6 +12,8 @@
 <%= @teacher.email %>
 <h3>担当生徒</h3>
 <% @teacher.students.each do |student| %>
-  <%= student.first_name%>
+  <div class="list">
+    <%= link_to student.first_name, "/students/#{student.id}" %>
+  </div>
 <% end %>
 
