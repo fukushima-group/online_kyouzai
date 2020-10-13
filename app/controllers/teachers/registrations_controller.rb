@@ -38,7 +38,27 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  def show
+    @teacher = current_teacher
+  end
+
+  def teacher_profile_edit
+  end
+
+  def teacher_profile_update
+    current_teacher.assign_attributes(account_update_params)
+    if current_teacher.save
+      redirect_to teacher_registration_path(current_teacher), notice: 'プロフィールを更新しました'
+    else
+      render "teacher_profile_edit"
+    end
+  end
+
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

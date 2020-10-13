@@ -1,0 +1,23 @@
+<h1>生徒情報</h1>
+<%= link_to 'プロフィール編集', edit_student_registration_path %>
+<h3>苗字</h3>
+<%= @student.first_name %>
+<h3>名前</h3>
+<%= @student.last_name %>
+<h3>苗字（フリガナ）</h3>
+<%= @student.first_name_kana%>
+<h3>名前（フリガナ）</h3>
+<%= @student.last_name_kana %>
+<h3>メールアドレス</h3>
+<%= @student.email %>
+<h3>苗字</h3>
+<%= @student.school_year.name %>
+<h3>名前</h3>
+<%= @student.club.name %>
+<h3>苗字（フリガナ）</h3>
+<%= @student.purpose%>
+<h3>名前（フリガナ）</h3>
+<%= @student.teacher.first_name %>
+
+
+
