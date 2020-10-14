@@ -55,8 +55,9 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
 
   def teacher_profile_update
     current_teacher.assign_attributes(account_update_params)
-    if current_teacher.save
-      redirect_to teacher_registration_path(current_teacher), notice: 'プロフィールを更新しました'
+    if current_teacher.valid?
+      current_teacher.save
+      redirect_to "/teachers/#{current_teacher.id}", notice: 'プロフィールを更新しました'
     else
       render "teacher_profile_edit"
     end

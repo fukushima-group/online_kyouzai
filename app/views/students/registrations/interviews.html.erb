@@ -1,0 +1,7 @@
+<% @student.interviews.each_with_index do |interview, i| %>
+  <div class="list">
+    <%= "第#{i + 1}回" %>
+    <br>
+    <%= interview.content%>
+  </div>
+<% end %>

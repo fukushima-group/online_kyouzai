@@ -1,7 +1,7 @@
 <% @student.interviews.each_with_index do |interview, i| %>
   <div class="list">
     <%= "第#{i + 1}回" %>
-    <%= link_to "編集する", edit_interview_path %>
+    <%= link_to "編集する", edit_interview_path(@student.interviews[i].id) %>
     <br>
     <%= interview.content%>
   </div>

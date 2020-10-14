@@ -1,5 +1,7 @@
 <h1>生徒情報</h1>
-<%= link_to 'プロフィール編集', edit_student_registration_path %>
+<%= link_to 'プロフィール編集', student_profile_edit_path %>
+<br>
+<%= link_to '面談内容一覧', "/students/#{current_student.id}/interviews" %>
 <h3>苗字</h3>
 <%= @student.first_name %>
 <h3>名前</h3>

@@ -38,6 +38,10 @@ class Students::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def interviews
+    @student = Student.find(params[:id])
+  end
+
   def show
     @student = current_student
   end
@@ -47,8 +51,9 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   def profile_update
     current_student.assign_attributes(account_update_params)
-    if current_student.save
-      redirect_to student_registration_path, notice: 'プロフィールを更新しました'
+    if current_student.valid?
+      current_student.save
+      redirect_to "students_#{current_student.id}", notice: 'プロフィールを更新しました'
     else
       render "student_profile_edit"
     end

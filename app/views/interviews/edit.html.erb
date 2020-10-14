@@ -1,0 +1,5 @@
+<%= form_with model: @interview , local: true do |f| %>
+<%= f.text_area :content, class:"interview-content", id:"interview-content", placeholder:"面談内容を記入（1,000文字まで）", maxlength:"1000" %>
+<%= hidden_field_tag :student_id, @student.id %>
+<%= f.submit "更新する" ,class:"submit-btn" %>
+<% end %>
