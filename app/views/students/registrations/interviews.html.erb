@@ -1,7 +1,11 @@
-<% @student.interviews.each_with_index do |interview, i| %>
-  <div class="list">
-    <%= "第#{i + 1}回" %>
-    <br>
-    <%= interview.content%>
-  </div>
+<% if @student.interviews.present? %>
+  <% @student.interviews.each_with_index do |interview, i| %>
+    <div class="list">
+      <%= "第#{i + 1}回" %>
+      <br>
+      <%= interview.content%>
+    </div>
+  <% end %>
+<% else %>
+  <h3>まだ面談してません</h3>
 <% end %>

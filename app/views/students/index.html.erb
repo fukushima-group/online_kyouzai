@@ -1,7 +1,7 @@
 <h1>
   生徒検索
 </h1>
-<%= search_form_for @p, url: search_students_path do |f| %>
+<%= search_form_for @p, url: students_search_path do |f| %>
   <%= f.label :first_name_eq, '生徒情報' %>
 
   <%= f.collection_select :school_year_id_eq, SchoolYear.where.not(id: 0), :id, :name,  include_blank: '指定なし' %>

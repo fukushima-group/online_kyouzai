@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   resources :exams do
     # resources :transactions, only: [:index, :new, :create]
   end
-  
-
 
   resources :interviews, only: [:new, :create, :edit, :update]
 
@@ -15,17 +13,19 @@ Rails.application.routes.draw do
   }
 
   devise_scope :student do
+    get 'students/search', to: 'students#search'
+    get 'students/index', to: 'students#index'
     get 'students/:id', to: 'students/registrations#show'
     get 'students/:id/interviews', to: 'students/registrations#interviews'
     get 'student_profile_edit', to: 'students/registrations#student_profile_edit', as: 'student_profile_edit'
     patch 'student_profile_update', to: 'students/registrations#student_profile_update', as: 'student_profile_update'
   end
 
-  resources :students do
-    collection do
-      get :search
-    end
-  end
+  # resources :students do
+  #   collection do
+  #     get :search
+  #   end
+  # end
 
   devise_for :teachers, controllers: {
     sessions:      'teachers/sessions',
