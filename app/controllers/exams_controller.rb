@@ -5,6 +5,7 @@ class ExamsController < ApplicationController
   end
 
   def new
+    @parents = Unit.all.order("id ASC")
     @exam = Exam.new
   end
 
