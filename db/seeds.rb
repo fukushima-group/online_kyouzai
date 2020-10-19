@@ -1,3 +1,14 @@
+Teacher.create(:first_name => '田中先生', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'teacher@111', :password => 'teacher111')
+Teacher.create(:first_name => '山田先生', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'teacher@222', :password => 'teacher222')
+Teacher.create(:first_name => '佐藤先生', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'teacher@333', :password => 'teacher333')
+Student.create(:first_name => '田中生徒', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'student@111', :password => 'student111', :school_year_id => 1, :club_id => 1, :purpose => 'テストで100点', :teacher_id => 1)
+Student.create(:first_name => '山田生徒', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'student@222', :password => 'student222', :school_year_id => 2, :club_id => 2, :purpose => 'テストで90点', :teacher_id => 2)
+Student.create(:first_name => '佐藤生徒', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'student@333', :password => 'student333', :school_year_id => 3, :club_id => 3, :purpose => 'テストで80点', :teacher_id => 3)
+Student.create(:first_name => '鈴木生徒', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'student@444', :password => 'student444', :school_year_id => 1, :club_id => 1, :purpose => 'テストで100点', :teacher_id => 1)
+Student.create(:first_name => '高橋生徒', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'student@555', :password => 'student555', :school_year_id => 2, :club_id => 2, :purpose => 'テストで90点', :teacher_id => 2)
+Student.create(:first_name => '伊藤生徒', :last_name => '太郎', :first_name_kana => 'タナカ', :last_name_kana => 'タロウ', :email => 'student@666', :password => 'student666', :school_year_id => 3, :club_id => 3, :purpose => 'テストで80点', :teacher_id => 3)
+
+
 unit_parent_array = [
   {name: "中1理科"},
   {name: "中2理科"},
@@ -126,9 +137,9 @@ eng_1_grandchild_array = [
 ]
 
 parent = Unit.create(unit_parent_array[2])
-eng_2_child_array.each_with_index do |child,i|
+eng_1_child_array.each_with_index do |child,i|
   child = parent.children.create(name: child[:name])
-  eng_2_grandchild_array[i].each do |grandchild|
+  eng_1_grandchild_array[i].each do |grandchild|
     child.children.create(name: grandchild[:name])
   end
 end
