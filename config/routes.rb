@@ -42,6 +42,9 @@ Rails.application.routes.draw do
   end
 
 
+  namespace :api do
+    resources :units, only: :index, defaults: { format: 'json' }
+  end
 
 
 end

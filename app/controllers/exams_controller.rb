@@ -18,6 +18,11 @@ class ExamsController < ApplicationController
     end
   end
 
+  def show
+    @units = Unit.find(params[:id])
+    
+  end
+
 
   private
 

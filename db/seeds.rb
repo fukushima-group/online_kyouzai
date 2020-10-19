@@ -1,6 +1,8 @@
 unit_parent_array = [
   {name: "中1理科"},
-  {name: "中2理科"}
+  {name: "中2理科"},
+  {name: "中1英語"},
+  {name: "中2英語"}
 ]
 
 
@@ -76,6 +78,94 @@ parent = Unit.create(unit_parent_array[1])
 sci_2_child_array.each_with_index do |child,i|
   child = parent.children.create(name: child[:name])
   sci_2_grandchild_array[i].each do |grandchild|
+    child.children.create(name: grandchild[:name])
+  end
+end
+
+eng_1_child_array = [
+  {name: "３人称単数"},
+  {name: "現在進行形"},
+  {name: "助動詞のcan"},
+  {name: "一般動詞の過去形"},
+  {name: "定期テスト対策模試"},
+  {name: "直前模試"}
+]
+
+eng_1_grandchild_array = [
+  [
+    {name: "肯定文"},
+    {name: "疑問文・否定文"},
+    {name: "選択問題特訓"},
+    {name: "英作文まとめ"},
+    {name: "be動詞・一般動詞まとめ"}
+  ],[
+    {name: "肯定文"},
+    {name: "疑問文・否定文"},
+    {name: "英作文まとめ"},
+    {name: "現在進行形まとめ"}
+  ],[
+    {name: "肯定文"},
+    {name: "疑問文・否定文"},
+    {name: "英作文まとめ"},
+    {name: "canまとめ"}
+  ],[
+    {name: "肯定文"},
+    {name: "疑問文・否定文"},
+    {name: "選択問題特訓"},
+    {name: "英作文まとめ"},
+    {name: "時制のまとめ"}
+  ],[
+    {name: "第1回"},
+    {name: "第2回"},
+    {name: "第3回"}
+  ],[
+    {name: "第1回"},
+    {name: "第2回"},
+    {name: "第3回"}
+  ]
+]
+
+parent = Unit.create(unit_parent_array[2])
+eng_2_child_array.each_with_index do |child,i|
+  child = parent.children.create(name: child[:name])
+  eng_2_grandchild_array[i].each do |grandchild|
+    child.children.create(name: grandchild[:name])
+  end
+end
+
+eng_2_child_array = [
+  {name: "比較"},
+  {name: "受動態"},
+  {name: "接続詞"}
+]
+
+eng_2_grandchild_array = [
+  [
+    {name: "比較級<er>"},
+    {name: "最上級<est>"},
+    {name: "原級<as~as>"},
+    {name: "比較級<er>〜原級<as~as>のまとめ"},
+    {name: "more・most"},
+    {name: "比較総まとめ"},
+    {name: "比較級英作文まとめ"},
+  ],[
+    {name: "肯定文"},
+    {name: "疑問文・否定文"},
+    {name: "受動態まとめ"},
+    {name: "受動態英作文まとめ"}
+  ],[
+    {name: "従属接続詞"},
+    {name: "等位接続詞"},
+    {name: "接続詞まとめ"},
+    {name: "接続詞英作文まとめ"},
+    {name: "接続詞まとめ"}
+  ]
+]
+
+parent = Unit.create(unit_parent_array[3])
+eng_2_child_array.each_with_index do |child,i|
+  child = parent.children.create(name: child[:name])
+  eng_2_grandchild_array[i].each do |grandchild|
     child.children.create(name: grandchild[:name])
   end
 end
