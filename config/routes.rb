@@ -41,10 +41,10 @@ Rails.application.routes.draw do
     patch 'teacher_profile_update', to: 'teachers/registrations#teacher_profile_update', as: 'teacher_profile_update'
   end
 
-
-  namespace :api do
-    resources :units, only: :index, defaults: { format: 'json' }
-  end
+  resources :units, only: :create, defaults: { format: 'json' }
+  # namespace :api do
+  #   resources :units, only: :index, defaults: { format: 'json' }
+  # end
 
 
 end

@@ -1,7 +1,8 @@
 class UnitsController < ApplicationController
 
   def index
-    category = Category.find(params[:category_id])
-    @categories = category.children
+    binding.pry
+    unit = Unit.find(params[:unit_id])
+    @units = unit.children
   end
 end
