@@ -1,2 +1,23 @@
 <%= render "shared/header" %>
+<%= link_to '試験作成', new_exam_path %>
 <%= link_to "生徒検索へ", students_index_path%>
+
+
+
+<%# 生徒の今日の予定を表示させる %>
+
+<h2>試験一覧</h2>
+<% @exams.each do |exam| %>
+<%= link_to "編集", edit_exam_path(exam) %>
+<%= link_to "削除", exam_path(exam), method: :delete, data: { disable_with: '削除中...' } %>
+
+  試験名：<%= exam.name %>
+  <br>
+  学年・教科：<%= exam.unit.root.name%>
+  <br>
+  大単元：<%= exam.unit.parent.name%>
+  <br>
+  小単元：<%= exam.unit.name%>
+  <br>
+  <br>
+<% end %>

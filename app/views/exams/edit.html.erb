@@ -1,0 +1,20 @@
+<%= form_with model: @exam , local: true do |f| %>
+<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_area :name, autofocus: true, autocomplete: "exam_name" %>
+  </div>
+
+  <div id="unit_field">
+    <%= f.label :unit_id %><br />
+      <%= f.collection_select :unit_id, Unit.roots, :id, :name,  include_blank: '指定なし', selected: @exam.unit&.root_id %>
+      <% if @exam.unit.present? %>
+        <%= f.collection_select :unit_id, @exam.unit.parent.siblings, :id, :name, {selected: @exam.unit.parent_id}, {class: "next_unit_id"} %>
+        <%= f.collection_select :unit_id, @exam.unit.siblings, :id, :name, {}, {class: "next_unit_id"} %>
+        
+      <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "update", data: { disable_with: '更新中...' } %>
+  </div>
+<% end %>

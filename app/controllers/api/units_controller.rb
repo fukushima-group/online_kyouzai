@@ -1,9 +1,8 @@
 class UnitsController < ApplicationController
-  protect_from_forgery
 
-  def create
-    unit = Unit.find(params[:_json])
+  def index
+    binding.pry
+    unit = Unit.find(params[:unit_id])
     @units = unit.children
   end
-
 end

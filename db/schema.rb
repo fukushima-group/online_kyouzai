@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(version: 2020_10_06_060913) do
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.integer "unit_id", null: false
-    t.bigint "student_id", null: false
+    t.bigint "teacher_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_exams_on_student_id"
+    t.index ["teacher_id"], name: "index_exams_on_teacher_id"
   end
 
   create_table "interviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -85,7 +85,14 @@ ActiveRecord::Schema.define(version: 2020_10_06_060913) do
     t.index ["student_id"], name: "index_tests_on_student_id"
   end
 
-  add_foreign_key "exams", "students"
+  create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "exams", "teachers"
   add_foreign_key "interviews", "students"
   add_foreign_key "records", "exams"
   add_foreign_key "records", "students"

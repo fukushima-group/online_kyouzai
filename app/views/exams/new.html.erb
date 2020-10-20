@@ -1,1 +1,15 @@
 <%= form_with model: @exam , local: true do |f| %>
+<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_area :name, autofocus: true, autocomplete: "exam_name" %>
+  </div>
+
+  <div id="unit_field">
+    <%= f.label :unit_id %><br />
+      <%= f.collection_select :unit_id, Unit.roots, :id, :name,  include_blank: '指定なし' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "create", data: { disable_with: '作成中...' } %>
+  </div>
+<% end %>

@@ -9,5 +9,5 @@
   <%= f.collection_select :teacher_id_eq, Teacher.all, :id, :first_name, include_blank: '指定なし' %>
 
   <br>
-  <%= f.submit '検索' %>
+  <%= f.submit '検索', data: { disable_with: '検索中...' } %>
 <% end %>
