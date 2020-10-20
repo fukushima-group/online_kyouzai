@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const unitField = document.getElementById("unit_field");
   unitField.addEventListener("change", (e) => {
     const unit_id = e.target.value;
-    const unit_form = e.target;
+    // const unit_form = e.target;
     console.log(unit_id)
 
     const XHR = new XMLHttpRequest();
@@ -33,7 +33,20 @@ window.addEventListener("DOMContentLoaded", () => {
     XHR.send(unit_id);
     XHR.onload = () => {
       if (XHR.response.length == 0) return false;
-      console.log(nextAll(document.querySelector('#exam_unit_id'), '.next_unit_id'));
+      const form = nextAll(document.querySelector('#exam_unit_id'), '.next_unit_id');
+      
+      if (form.length == 2) {
+        console.log("test2")
+        console.log(form)
+        form.forEach(function (form) {
+          form.remove();
+        })
+      } else {
+        console.log("test1")
+        console.log(form)
+        // unit_form[1].remove();
+      }
+      
       
       
       const units = XHR.response
@@ -44,7 +57,7 @@ window.addEventListener("DOMContentLoaded", () => {
                   `;
       });
       const html = `
-                  <select name="exam[unit_id]" class="next_unit_id"><option value="">指定なし</option>
+                  <select name="exam[unit_id]" class="next_unit_id">
                     <option value="">---</option>
                     ${options}
                   </select>

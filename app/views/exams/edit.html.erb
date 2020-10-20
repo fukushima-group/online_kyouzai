@@ -8,7 +8,7 @@
     <%= f.label :unit_id %><br />
       <%= f.collection_select :unit_id, Unit.roots, :id, :name,  include_blank: '指定なし', selected: @exam.unit&.root_id %>
       <% if @exam.unit.present? %>
-        <%= f.collection_select :unit_id, @exam.unit.parent.siblings, :id, :name, { include_blank: true, selected: @exam.unit.parent_id }, { class: 'next_unit_id' } %>
+        <%= f.collection_select :unit_id, @exam.unit.parent.siblings, :id, :name, {selected: @exam.unit.parent_id}, {class: "next_unit_id"} %>
         <%= f.collection_select :unit_id, @exam.unit.siblings, :id, :name, {}, {class: "next_unit_id"} %>
         
       <% end %>
