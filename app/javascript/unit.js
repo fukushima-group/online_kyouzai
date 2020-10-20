@@ -1,5 +1,25 @@
 window.addEventListener("DOMContentLoaded", () => {
 
+  function nextAll(node, selector) {
+    var list = [];
+    var next = node.nextElementSibling;
+    
+    while (next && next.nodeType === 1) {
+      list.push(next);
+      next = next.nextElementSibling;
+    }
+  
+    if (selector) {
+      var node = [].slice.call(document.querySelectorAll(selector));
+      
+      list = list.filter(function(item) {
+        return node.indexOf(item) !== -1;
+      });
+    }
+  
+    return list;
+  }
+
   const unitField = document.getElementById("unit_field");
   unitField.addEventListener("change", (e) => {
     const unit_id = e.target.value;
@@ -13,6 +33,8 @@ window.addEventListener("DOMContentLoaded", () => {
     XHR.send(unit_id);
     XHR.onload = () => {
       if (XHR.response.length == 0) return false;
+      console.log(nextAll(document.querySelector('#exam_unit_id'), '.next_unit_id'));
+      
       
       const units = XHR.response
       let options = "";
@@ -22,7 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
                   `;
       });
       const html = `
-                  <select name="exam[unit_id]" id="exam_unit_id"><option value="">指定なし</option>
+                  <select name="exam[unit_id]" class="next_unit_id"><option value="">指定なし</option>
                     <option value="">---</option>
                     ${options}
                   </select>
@@ -34,11 +56,5 @@ window.addEventListener("DOMContentLoaded", () => {
     XHR.onerror = function () {
       alert("Request failed");
     };
-
-
-
-    // console.log(inputUnitParent)
-    // let html = buildUnitForm(inputUnitParent)
-    // unitField.insertAdjacentHTML('beforeend', html);
   })
 })
