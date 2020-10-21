@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "exams#index"
   resources :exams do
-    # resources :transactions, only: [:index, :new, :create]
+    resources :tests
   end
 
   resources :interviews, only: [:new, :create, :edit, :update]
@@ -42,9 +42,8 @@ Rails.application.routes.draw do
   end
 
   resources :units, only: :create, defaults: { format: 'json' }
-  # namespace :api do
-  #   resources :units, only: :index, defaults: { format: 'json' }
-  # end
+
+
 
 
 end

@@ -1,0 +1,26 @@
+<%= "生徒氏名：#{current_student.first_name}"%>
+<br>
+<br>
+試験名：<%= @exam.name %>
+<br>
+学年・教科：<%= @exam.unit.root.name %>
+<br>
+大単元：<%= @exam.unit.parent.name %>
+<br>
+小単元：<%= @exam.name %>
+<br>
+<br>
+<%= link_to "問題を追加", new_exam_test_path if teacher_signed_in? %>
+<br>
+<br>
+<% @tests.each_with_index do |test, i| %>
+  <%= "第#{i + 1 }問"%>
+  <%= link_to "問題の編集", edit_exam_test_path(@exam.id, test.id) if teacher_signed_in? %>
+  <%= link_to "問題の削除", exam_test_path(@exam.id, test.id), method: :delete, data: {confirm: "問題を削除しますか？"} if teacher_signed_in? %>
+  <br>
+  <%= test.question %>
+  <br>
+  <%= test.answer %>
+  <br>
+  <br>
+<% end %>

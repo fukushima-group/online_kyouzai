@@ -79,10 +79,10 @@ ActiveRecord::Schema.define(version: 2020_10_06_060913) do
   create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "question", null: false
     t.text "answer", null: false
-    t.bigint "student_id", null: false
+    t.bigint "exam_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_tests_on_student_id"
+    t.index ["exam_id"], name: "index_tests_on_exam_id"
   end
 
   create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -97,5 +97,5 @@ ActiveRecord::Schema.define(version: 2020_10_06_060913) do
   add_foreign_key "records", "exams"
   add_foreign_key "records", "students"
   add_foreign_key "students", "teachers"
-  add_foreign_key "tests", "students"
+  add_foreign_key "tests", "exams"
 end
