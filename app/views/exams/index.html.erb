@@ -14,6 +14,16 @@
   <% end %>
   <%= link_to "問題一覧へ", exam_tests_path(exam) %>
   <br>
+  <% if exam.record.present? %>
+    <%= "この試験は#{exam.record.created_at.strftime("%Y年%m月%d日")}に実施しました"%>
+    結果：<%= exam.record.score %>点
+    <br>
+    <%= link_to "点数の編集", edit_exam_record_path(exam.id, exam.record.id) %>
+    <%= link_to "点数の削除", exam_record_path(exam.id, exam.record.id), method: :delete, data: { disable_with: '削除中...' }, data: {confirm: "点数を削除しますか？"} %>
+  <% else %>
+    <%= link_to "試験結果を入力する", new_exam_record_path(exam) %>
+  <% end %>
+  <br>
   試験名：<%= exam.name %>
   <br>
   学年・教科：<%= exam.unit.root.name%>
