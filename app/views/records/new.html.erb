@@ -1,0 +1,10 @@
+<%= form_with model: @record, url: exam_records_path(@exam.id), local: true do |f| %>
+<div class="field">
+    <%= f.label :score %><br />
+    <%= f.number_field :score,min:0,max:100, autofocus: true, autocomplete: "score", placeholder:"半角数字で点数を入力" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "create", data: { disable_with: '保存中...' } %>
+  </div>
+<% end %>

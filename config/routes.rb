@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "exams#index"
   resources :exams do
     resources :tests
+    resources :records, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :interviews, only: [:new, :create, :edit, :update]
@@ -20,12 +21,6 @@ Rails.application.routes.draw do
     get 'student_profile_edit', to: 'students/registrations#student_profile_edit', as: 'student_profile_edit'
     patch 'student_profile_update', to: 'students/registrations#student_profile_update', as: 'student_profile_update'
   end
-
-  # resources :students do
-  #   collection do
-  #     get :search
-  #   end
-  # end
 
   devise_for :teachers, controllers: {
     sessions:      'teachers/sessions',
