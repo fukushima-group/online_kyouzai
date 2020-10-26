@@ -24,7 +24,7 @@
   <%= link_to "問題の削除", exam_test_path(@exam.id, test.id), method: :delete, data: {confirm: "問題を削除しますか？"} if teacher_signed_in? %>
   <br>
   <% test.images.each do |image| %>
-    <%= image_tag(image, width:600) %>
+    <%= image_tag(image, width:400) %>
   <% end %>
   <br>
   <%= test.question %>

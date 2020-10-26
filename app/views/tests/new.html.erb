@@ -1,20 +1,24 @@
-<%= form_with model: @test, url: exam_tests_path(@exam.id), local: true do |f| %>
-  <div class="field">
-    <%= f.label :question %><br />
-    <%= f.text_area :question, autofocus: true, autocomplete: "question_name" %>
-  </div>
+<div class="test-content">
+  <%= form_with model: @test, url: exam_tests_path(@exam.id), local: true do |f| %>
+    <div class="field">
+      <%= f.label :question %><br />
+      <%= f.text_area :question, autofocus: true, autocomplete: "question_name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :answer %><br />
-    <%= f.text_area :answer, autofocus: true, autocomplete: "answer_name" %>
-  </div>
+    <div class="field">
+      <%= f.label :answer %><br />
+      <%= f.text_area :answer, autofocus: true, autocomplete: "answer_name" %>
+    </div>
 
-  <div>
-    <%= f.label :images %>
-    <%= f.file_field :images, multiple: true %>
-  </div>
+    <div id="previews"></div>
 
-  <div class="actions">
-    <%= f.submit "create", data: { disable_with: '作成中...' } %>
-  </div>
-<% end %>
+    <div class="click-upload" >
+      <%= f.label :images %>
+      <%= f.file_field :images, name: 'test[images][]', data: {index: 0} %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "create", data: { disable_with: '作成中...' } %>
+    </div>
+  <% end %>
+</div>

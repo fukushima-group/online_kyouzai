@@ -4,7 +4,7 @@ class TestsController < ApplicationController
 
   def index
     @exam = Exam.find(params[:exam_id])
-    @tests = Test.all
+    @tests = Test.where(exam_id: params[:exam_id])
   end
 
   def new

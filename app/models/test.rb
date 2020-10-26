@@ -7,4 +7,5 @@ class Test < ApplicationRecord
 
   belongs_to :exam
   has_many_attached :images
+  validates :images, length: { minimum: 0, maximum: 5, message: "は5枚以下にしてください" }
 end
