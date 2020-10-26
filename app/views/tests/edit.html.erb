@@ -24,11 +24,6 @@
       <%= f.file_field :images, name: 'test[images][]', data: {index: 0} %>
     </div>
 
-    <%= f.fields_for :images do |image| %>
-      <%= image.file_field :image, class: "click-upload", data: {index: image.index} %>
-    <% end %>
-
-
     <div class="actions">
       <%= f.submit "update", data: { disable_with: '更新中...' } %>
     </div>
