@@ -6,4 +6,5 @@ class Test < ApplicationRecord
   end
 
   belongs_to :exam
+  has_many_attached :images
 end
