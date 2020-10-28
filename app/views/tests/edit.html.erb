@@ -1,15 +1,31 @@
-<%= form_with model: @test, url: exam_test_path(@exam.id), local: true do |f| %>
-  <div class="field">
-    <%= f.label :question %><br />
-    <%= f.text_area :question, autofocus: true, autocomplete: "question_name" %>
-  </div>
+<div class="test-content">
+  <%= form_with model: @test, url: exam_test_path(@exam.id), local: true do |f| %>
+    <div class="field">
+      <%= f.label :question %><br />
+      <%= f.text_area :question, autofocus: true, autocomplete: "question_name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :answer %><br />
-    <%= f.text_area :answer, autofocus: true, autocomplete: "answer_name" %>
-  </div>
+    <div class="field">
+      <%= f.label :answer %><br />
+      <%= f.text_area :answer, autofocus: true, autocomplete: "answer_name" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "update", data: { disable_with: '更新中...' } %>
-  </div>
-<% end %>
+    <div id="previews">
+      <% @test.images.each_with_index do |image, i| %>
+        <div class="preview" data-index="<%= i%>">
+          <%= image_tag image, class: "preview-image" %>
+          <div class="image-delete-button" data-index="<%= i%>">削除</div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="click-upload" >
+      <%= f.label :images %>
+      <%= f.file_field :images, name: 'test[images][]', data: {index: 0} %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "update", data: { disable_with: '更新中...' } %>
+    </div>
+  <% end %>
+</div>

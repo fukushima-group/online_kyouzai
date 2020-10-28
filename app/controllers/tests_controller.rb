@@ -4,7 +4,7 @@ class TestsController < ApplicationController
 
   def index
     @exam = Exam.find(params[:exam_id])
-    @tests = Test.all
+    @tests = Test.where(exam_id: params[:exam_id])
   end
 
   def new
@@ -51,7 +51,7 @@ class TestsController < ApplicationController
   private
 
   def test_params
-    params.require(:test).permit(:question, :answer).merge(exam_id: params[:exam_id])
+    params.require(:test).permit(:question, :answer, images: []).merge(exam_id: params[:exam_id])
   end
 
   def set_test

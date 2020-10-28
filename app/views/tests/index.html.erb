@@ -1,4 +1,9 @@
-<%= "生徒氏名：#{current_student.first_name}"%>
+<%= "ログイン先生：#{current_teacher.first_name}" if current_teacher.present? %>
+<br>
+<%= "問題を作成した先生：#{@exam.teacher.first_name}" %>
+<% if current_student.present? %>
+  <%= "生徒氏名：#{current_student.first_name}" %>
+<% end %>
 <br>
 <br>
 試験名：<%= @exam.name %>
@@ -17,6 +22,10 @@
   <%= "第#{i + 1 }問"%>
   <%= link_to "問題の編集", edit_exam_test_path(@exam.id, test.id) if teacher_signed_in? %>
   <%= link_to "問題の削除", exam_test_path(@exam.id, test.id), method: :delete, data: {confirm: "問題を削除しますか？"} if teacher_signed_in? %>
+  <br>
+  <% test.images.each do |image| %>
+    <%= image_tag(image, width:400) %>
+  <% end %>
   <br>
   <%= test.question %>
   <br>

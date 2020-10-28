@@ -58,3 +58,4 @@ gem "devise"
 gem "pry-rails"
 gem 'ancestry'
 gem 'ransack'
+gem 'mini_magick'
