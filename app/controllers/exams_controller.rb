@@ -12,6 +12,7 @@ class ExamsController < ApplicationController
   end
 
   def create
+    binding.pry
     @exam = Exam.new(exam_params)
     if @exam.valid?
       @exam.save
@@ -29,6 +30,7 @@ class ExamsController < ApplicationController
   end
 
   def update
+    binding.pry
     if @exam.valid?
       @exam.update(exam_params)
       redirect_to root_path
@@ -45,8 +47,6 @@ class ExamsController < ApplicationController
       render :index
     end
   end
-
-
 
   private
 

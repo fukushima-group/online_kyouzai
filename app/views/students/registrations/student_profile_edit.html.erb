@@ -1,3 +1,7 @@
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>
+<br>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <% resource = Student.find(current_student.id) unless resource %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

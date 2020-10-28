@@ -1,3 +1,7 @@
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>
+<br>
 <div class="test-content">
   <%= form_with model: @test, url: exam_test_path(@exam.id), local: true do |f| %>
     <div class="field">

@@ -1,3 +1,7 @@
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>
+<br>
 <% @student.interviews.each_with_index do |interview, i| %>
   <div class="list">
     <%= "第#{i + 1}回" %>

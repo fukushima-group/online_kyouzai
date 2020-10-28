@@ -1,3 +1,7 @@
+<%= link_to :root do %>
+  <button>トップへ戻る</button>
+<% end %>
+<br>
 <%= "ログイン先生：#{current_teacher.first_name}" if current_teacher.present? %>
 <br>
 <%= "問題を作成した先生：#{@exam.teacher.first_name}" %>
