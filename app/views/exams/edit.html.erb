@@ -3,6 +3,12 @@
 <% end %>
 <br>
 <%= form_with model: @exam , local: true do |f| %>
+<% if @exam.errors.any? %>
+  <%= @exam.errors.count %>件のエラー
+  <% @exam.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <div class="field">
     <%= f.label :name %><br />
     <%= f.text_area :name, autofocus: true, autocomplete: "exam_name" %>

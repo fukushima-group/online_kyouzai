@@ -3,7 +3,13 @@
 <% end %>
 <br>
 <%= form_with model: @interview , local: true do |f| %>
-<%= f.text_area :content, class:"interview-content", id:"interview-content", placeholder:"面談内容を記入（1,000文字まで）", maxlength:"1000" %>
+<% if @interview.errors.any? %>
+  <%= @interview.errors.count %>件のエラー
+  <% @interview.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<%= f.text_area :content, class:"interview-content", id:"interview-content", placeholder:"面談内容を記入（1,000文字まで）", maxlength:"1000", required: true %>
 <%= hidden_field_tag :student_id, @student.id %>
 <%= f.submit "登録する" ,class:"submit-btn", data: { disable_with: '登録中...' } %>
 <% end %>
