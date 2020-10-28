@@ -1,9 +1,6 @@
 class Exam < ApplicationRecord
 
-  with_options presence: true do
-    validates :name
-    validates :unit_id
-  end
+  validates :name, presence: true
   
   belongs_to :teacher
   belongs_to :unit

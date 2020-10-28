@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     `;
         });
         const html = `
-                    <select name="exam[unit_id]" class="next_unit_id">
+                    <select required="required" name="exam[unit_id]" class="next_unit_id">
                       <option value="">---</option>
                       ${options}
                     </select>

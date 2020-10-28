@@ -4,14 +4,20 @@
 <br>
 <div class="test-content">
   <%= form_with model: @test, url: exam_tests_path(@exam.id), local: true do |f| %>
+  <% if @test.errors.any? %>
+    <%= @test.errors.count %>件のエラー
+    <% @test.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
     <div class="field">
       <%= f.label :question %><br />
-      <%= f.text_area :question, autofocus: true, autocomplete: "question_name" %>
+      <%= f.text_area :question, autofocus: true, autocomplete: "question_name", required: true %>
     </div>
 
     <div class="field">
       <%= f.label :answer %><br />
-      <%= f.text_area :answer, autofocus: true, autocomplete: "answer_name" %>
+      <%= f.text_area :answer, autofocus: true, autocomplete: "answer_name", required: true %>
     </div>
 
     <div id="previews"></div>

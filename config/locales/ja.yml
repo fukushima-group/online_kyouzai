@@ -1,0 +1,42 @@
+ja:
+  activerecord:
+    models:
+      teacher: 先生
+      student: 生徒
+      interview: 面談
+      unit: 単元
+      exam: 試験
+      record: 点数
+      test: 問題
+      item: アイテム
+      address: 住所
+    attributes:
+      teacher:
+        first_name: 姓
+        last_name: 名
+        first_name_kana: 姓（カナ）
+        last_name_kana: 名（カナ）
+      student:
+        first_name: 姓
+        last_name: 名
+        first_name_kana: 姓（カナ）
+        last_name_kana: 名（カナ）
+        school_year_id: 学年
+        club_id: 部活
+        purpose: 目的
+      interview:
+        content: 面談内容
+      unit:
+        name: 単元名
+      exam:
+        name: 試験名
+        unit: 単元
+        unit_id: 単元
+      record:
+        score: 点数
+      test:
+        question: 問題
+        answer: 解答
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日

@@ -59,3 +59,4 @@ gem "pry-rails"
 gem 'ancestry'
 gem 'ransack'
 gem 'mini_magick'
+gem 'rails-i18n'
