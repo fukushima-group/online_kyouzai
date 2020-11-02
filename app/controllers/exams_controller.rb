@@ -21,7 +21,7 @@ class ExamsController < ApplicationController
   end
 
   def show
-    @units = Unit.find(params[:id])
+    @exam = Exam.find(params[:id])
     
   end
 
