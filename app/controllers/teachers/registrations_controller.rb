@@ -48,7 +48,7 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
 
   def student_update
     @student = Student.find(params[:teacher_id])
-    if @student.update(student_update_params)
+    if @student.update(student_lists_params)
       redirect_to "/teachers/#{current_teacher.id}", notice: '生徒情報を更新しました'
     else
       @teacher = current_teacher
@@ -80,7 +80,7 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-  def student_update_params
+  def student_lists_params
     params.permit(:teacher_id).merge(teacher_id: current_teacher.id)
   end
 
