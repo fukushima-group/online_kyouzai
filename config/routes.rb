@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   devise_scope :teacher do
     get 'teachers/:id', to: 'teachers/registrations#show'
+    patch 'teachers/:id/student_update', to: 'teachers/registrations#student_update'
     get 'teachers/:id/student_details/:id', to: 'teachers/registrations#student_details'
     get 'teachers/:id/student_details/:id/interviews', to: 'teachers/registrations#interviews'
     get 'teachers/:id/teacher_profile_edit', to: 'teachers/registrations#teacher_profile_edit', as: 'teacher_profile_edit'

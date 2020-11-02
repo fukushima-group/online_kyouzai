@@ -46,6 +46,17 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
     @teacher = current_teacher
   end
 
+  def student_update
+    @student = Student.find(params[:teacher_id])
+    if @student.update(student_update_params)
+      redirect_to "/teachers/#{current_teacher.id}", notice: '生徒情報を更新しました'
+    else
+      @teacher = current_teacher
+      flash.now[:alert] = '生徒の追加に失敗しました'
+      render "show"
+    end
+  end
+
   def student_details
     @student = Student.find(params[:id])
   end
@@ -67,6 +78,10 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
 
   def update_resource(resource, params)
     resource.update_without_password(params)
+  end
+
+  def student_update_params
+    params.permit(:teacher_id).merge(teacher_id: current_teacher.id)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

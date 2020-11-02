@@ -22,4 +22,14 @@
     <%= link_to student.first_name, "/teachers/#{current_teacher.id}/student_details/#{student.id}" %>
   </div>
 <% end %>
+<br>
+<%= form_with url: "/teachers/#{@teacher.id}/student_update", method: :patch, local: true do |f| %>
+  <div class="field">
+    <%= f.label :teacher_id, "生徒を追加する" %><br/>
+    <%= f.collection_select :teacher_id, Student.where.not(teacher_id: current_teacher.id), :id, :first_name, {include_blank: '指定なし'}, required: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit "create", data: { disable_with: '作成中...' } %>
+  </div>
+<% end %>
 
