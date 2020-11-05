@@ -8,7 +8,7 @@
 
 <h2>試験一覧</h2>
 <% @exams.each do |exam| %>
-  <% if teacher_signed_in? %>
+  <% if teacher_signed_in? && exam.teacher_id == current_teacher.id %>
     <%= link_to "編集", edit_exam_path(exam) %>
     <%= link_to "削除", exam_path(exam), method: :delete, data: { disable_with: '削除中...' }, data: {confirm: "試験を削除しますか？"} %>
   <% end %>
