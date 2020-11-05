@@ -12,7 +12,7 @@
     <%= link_to "編集", edit_exam_path(exam) %>
     <%= link_to "削除", exam_path(exam), method: :delete, data: { disable_with: '削除中...' }, data: {confirm: "試験を削除しますか？"} %>
   <% end %>
-  <%= link_to "問題一覧へ", exam_tests_path(exam) %>
+    <%= link_to "問題一覧へ", exam_tests_path(exam) %>
   <br>
   <% if exam.records.find_by(student_id: current_student).present? %>
     <%= "この試験は#{exam.records.find_by(student_id: current_student).created_at.strftime("%Y年%m月%d日")}に実施しました"%>
