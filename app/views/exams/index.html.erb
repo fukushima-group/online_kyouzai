@@ -12,19 +12,18 @@
     <%= link_to "編集", edit_exam_path(exam) %>
     <%= link_to "削除", exam_path(exam), method: :delete, data: { disable_with: '削除中...' }, data: {confirm: "試験を削除しますか？"} %>
   <% end %>
-    <%= link_to "問題一覧へ", exam_tests_path(exam) %>
   <br>
   <% if exam.records.find_by(student_id: current_student).present? %>
-    <%= "この試験は#{exam.records.find_by(student_id: current_student).created_at.strftime("%Y年%m月%d日")}に実施しました"%>
+    <%= "あなたはこの試験を#{exam.records.find_by(student_id: current_student).created_at.strftime("%Y年%m月%d日")}に実施しました"%>
     結果：<%= exam.records.find_by(student_id: current_student).score %>点
     <br>
     <%= link_to "点数の編集", edit_exam_record_path(exam.id, exam.records.find_by(student_id: current_student).id) %>
     <%= link_to "点数の削除", exam_record_path(exam.id, exam.records.find_by(student_id: current_student).id), method: :delete, data: { disable_with: '削除中...' }, data: {confirm: "点数を削除しますか？"} %>
   <% elsif current_student.present? %>
     <%= link_to "試験結果を入力する", new_exam_record_path(exam) %>
-  <% else %>
-    <%= link_to "受けた生徒一覧を表示", exam_path(exam) %>
   <% end %>
+  <br>
+  <%= link_to "受けた生徒一覧を表示", exam_path(exam) if teacher_signed_in?%>
   <br>
   試験名：<%= exam.name %>
   <br>
@@ -34,5 +33,10 @@
   <br>
   小単元：<%= exam.unit.name%>
   <br>
-  <br>
+  <% if teacher_signed_in? || student_signed_in? %>
+    <%= link_to "問題一覧へ", exam_tests_path(exam) %>
+  <% else %>
+    <h5>問題を実施するにはログインしてください</h5>
+  <% end %>
+  <h4>===========================================</h4>
 <% end %>
