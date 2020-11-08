@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  root to: "exams#index"
-  resources :exams do
-    resources :tests
-    resources :records, only: [:new, :create, :edit, :update, :destroy]
-  end
-
-  resources :interviews, only: [:new, :create, :edit, :update]
 
   resources :rooms do
     resources :chats, only: [:index, :create]
@@ -41,9 +34,14 @@ Rails.application.routes.draw do
     patch 'teacher_profile_update', to: 'teachers/registrations#teacher_profile_update', as: 'teacher_profile_update'
   end
 
-  resources :units, only: :create, defaults: { format: 'json' }
+  root to: "exams#index"
+  resources :exams do
+    resources :tests
+    resources :records, only: [:new, :create, :edit, :update, :destroy]
+  end
 
+  resources :interviews, only: [:new, :create, :edit, :update]
 
-
+  resources :units, only: :index
 
 end

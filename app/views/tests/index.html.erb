@@ -24,8 +24,10 @@
 <br>
 <% @tests.each_with_index do |test, i| %>
   <%= "第#{i + 1 }問"%>
-  <%= link_to "問題の編集", edit_exam_test_path(@exam.id, test.id) if teacher_signed_in? %>
-  <%= link_to "問題の削除", exam_test_path(@exam.id, test.id), method: :delete, data: {confirm: "問題を削除しますか？"} if teacher_signed_in? %>
+  <% if teacher_signed_in? %>
+    <%= link_to "問題の編集", edit_exam_test_path(@exam.id, test.id) %>
+    <%= link_to "問題の削除", exam_test_path(@exam.id, test.id), method: :delete, data: {confirm: "問題を削除しますか？"} %>
+  <% end %>
   <br>
   <% test.images.each do |image| %>
     <%= image_tag(image, width:400) %>

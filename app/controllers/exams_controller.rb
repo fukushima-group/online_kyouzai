@@ -3,11 +3,10 @@ class ExamsController < ApplicationController
   before_action :set_exam, only: [:edit, :update, :destroy]
 
   def index
-    @exams = Exam.all.order(created_at: :desc)
+    @exams = Exam.order(created_at: :desc)
   end
 
   def new
-    @parents = Unit.all.order("id ASC")
     @exam = Exam.new
   end
 
@@ -22,7 +21,6 @@ class ExamsController < ApplicationController
 
   def show
     @exam = Exam.find(params[:id])
-    
   end
 
   def edit

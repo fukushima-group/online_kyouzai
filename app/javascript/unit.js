@@ -4,75 +4,58 @@ window.addEventListener("DOMContentLoaded", () => {
   const params = path.replace(/exams/g, '').replace(/edit/g, '').replace(/\//g, '');
 
   if (path == "/exams/new" || path.includes("exams") && path.includes("edit") && /^([1-9]\d*|0)$/.test(params)) {
-    function nextAll(node, selector) {
-      var list = [];
-      var next = node.nextElementSibling;
-      
-      while (next && next.nodeType === 1) {
-        list.push(next);
-        next = next.nextElementSibling;
+
+    const unitForms = document.querySelectorAll('.unit-select-form'); // 単元のフォーム
+
+    if (unitForms.length == 0) return null // カテゴリのフォームが無いなら以後実行しない
+
+    unitChanged = (e) => { // カテゴリが変更された時、ajax通信を行い次のフォームを組み立てて追加する
+      const selectedUnitId = e.target.value; // 選択されたカテゴリのid
+      const changedForm = e.target; // 選択されたフォームの要素
+  
+      if (changedForm.nextElementSibling) changedForm.nextElementSibling.remove(); // 後ろのフォームをリセットする
+  
+  
+      if (!selectedUnitId) return null; // 「ーーーーー」を選択したときはここで中断
+  
+      // ajax準備
+      const XHR = new XMLHttpRequest();
+      // ?Unit_id=${selectedUnitId}をパスに含めることでparams[:unit_id]に選択したカテゴリのIDが送られる
+      XHR.open("GET", `/units/?unit_id=${selectedUnitId}`, true);
+      XHR.responseType = "json";
+      // ajax開始
+      XHR.send();
+  
+      XHR.onload = () => {
+  
+        if (XHR.status != 200) { // ajaxに失敗した時の処理
+          alert("failed");
+          alert(`Error ${XHR.status}: ${XHR.statusText}`);
+          return null;
+        }
+  
+        console.log("successed");
+  
+        console.table(XHR.response);
+  
+        console.log(XHR.response.html);  // render json: { html: html }の内容を表示する
+  
+        if (!XHR.response.html) return null; // 孫単元が選択されたときはここでストップ
+  
+        const newUnitForm = document.createElement('div'); // 新しいカテゴリのフォームを作る下準備
+        console.log("newUnitForm(フォーム追加前):", document.createElement('div'));
+        newUnitForm.innerHTML = XHR.response.html; // コントローラから返ってきたフォームを挿入する
+        console.log("newUnitForm(フォーム追加後):", newUnitForm);
+        console.log("newUnitFormの最初の子要素:", newUnitForm.firstElementChild);
+        console.log(newUnitForm.firstChild)
+        newUnitForm.firstChild.addEventListener('change', unitChanged); // コントローラから返ってきたフォームにイベントをセットする
+  
+        changedForm.insertAdjacentElement("afterend", newUnitForm); // 新しいカテゴリのフォームをビューに表示する
       }
-    
-      if (selector) {
-        var node = [].slice.call(document.querySelectorAll(selector));
-        
-        list = list.filter(function(item) {
-          return node.indexOf(item) !== -1;
-        });
-      }
-    
-      return list;
     }
 
-    const unitField = document.getElementById("unit_field");
-    unitField.addEventListener("change", (e) => {
-      const unit_id = e.target.value;
-      // const unit_form = e.target;
-      console.log(unit_id)
-
-      const XHR = new XMLHttpRequest();
-      XHR.open("POST", "/units", true);
-      XHR.responseType = "json";
-      XHR.setRequestHeader("Content-Type", "application/json");
-      XHR.send(unit_id);
-      XHR.onload = () => {
-        if (XHR.response.length == 0) return false;
-        const form = nextAll(document.querySelector('#exam_unit_id'), '.next_unit_id');
-        
-        if (form.length == 2) {
-          console.log("test2")
-          console.log(form)
-          form.forEach(function (form) {
-            form.remove();
-          })
-        } else {
-          console.log("test1")
-          console.log(form)
-          // unit_form[1].remove();
-        }
-        
-        
-        
-        const units = XHR.response
-        let options = "";
-        units.forEach(function (unit) {
-          options += `
-                    <option value="${unit.id}">${unit.name}</option>
-                    `;
-        });
-        const html = `
-                    <select required="required" name="exam[unit_id]" class="next_unit_id">
-                      <option value="">---</option>
-                      ${options}
-                    </select>
-                    `;
-        unitField.insertAdjacentHTML('beforeend', html);
-
-      };
-
-      XHR.onerror = function () {
-        alert("Request failed");
-      };
-    })
-  }
-})
+    unitForms.forEach(unitForm => {  // カテゴリのフォームにイベントを設定する
+      unitForm.addEventListener('change', unitChanged);
+    });
+  };
+});
