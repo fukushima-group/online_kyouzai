@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :interviews, only: [:new, :create, :edit, :update]
 
+  resources :rooms do
+    resources :chats, only: [:index, :create]
+  end
+
   devise_for :students, controllers: {
     sessions:      'students/sessions',
     passwords:     'students/passwords',

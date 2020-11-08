@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_110551) do
+ActiveRecord::Schema.define(version: 2020_11_02_123402) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_10_26_110551) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "chats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "message", null: false
+    t.bigint "room_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_chats_on_room_id"
   end
 
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -58,6 +67,15 @@ ActiveRecord::Schema.define(version: 2020_10_26_110551) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exam_id"], name: "index_records_on_exam_id"
     t.index ["student_id"], name: "index_records_on_student_id"
+  end
+
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "teacher_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_rooms_on_student_id"
+    t.index ["teacher_id"], name: "index_rooms_on_teacher_id"
   end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -114,10 +132,13 @@ ActiveRecord::Schema.define(version: 2020_10_26_110551) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chats", "rooms"
   add_foreign_key "exams", "teachers"
   add_foreign_key "interviews", "students"
   add_foreign_key "records", "exams"
   add_foreign_key "records", "students"
+  add_foreign_key "rooms", "students"
+  add_foreign_key "rooms", "teachers"
   add_foreign_key "students", "teachers"
   add_foreign_key "tests", "exams"
 end

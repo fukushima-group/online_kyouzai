@@ -22,4 +22,6 @@ class Teacher < ApplicationRecord
 
   has_many :students
   has_many :exams
+  has_many :rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
 end

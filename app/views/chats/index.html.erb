@@ -1,0 +1,21 @@
+<%= link_to :rooms do %>
+  <button>DM一覧へ</button>
+<% end %>
+<br>
+<%= "#{@room.student.first_name}とのDM" if teacher_signed_in?%>
+<%= "#{@room.teacher.first_name}とのDM" if student_signed_in?%>
+<br>
+<% @room.chats.each do |chat| %>
+  <%= chat.message %>
+<% end %>
+<br>
+<%= form_with model: [@room, @chat] , local: true do |f| %>
+<div class="field">
+    <%= f.label :message %><br />
+    <%= f.text_area :message, autofocus: true, autocomplete: "message", required: true %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit "create", data: { disable_with: '作成中...' } %>
+  </div>
+<% end %>

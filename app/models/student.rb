@@ -33,4 +33,6 @@ class Student < ApplicationRecord
   belongs_to :teacher
   has_many :records
   has_many :interviews
+  has_many :rooms
+  has_many :chats
 end

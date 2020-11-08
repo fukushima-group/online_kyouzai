@@ -1,0 +1,13 @@
+<%= link_to :root do %>
+  <button>トップページへ</button>
+<% end %>
+<br>
+<h2>DM一覧</h2>
+<% @rooms.each do |room| %>
+  <% if teacher_signed_in? %>
+    <%= link_to "#{room.student.first_name}", room_chats_path(room) %>
+    <%= link_to "DMを削除", room_path(room), method: :delete, data: { disable_with: '削除中...' }, data: {confirm: "DMを削除しますか？"} %>
+  <% end %>
+  <br>
+  <%= link_to "#{room.teacher.first_name}", room_chats_path(room) if student_signed_in? %>
+<% end %>
