@@ -5,8 +5,13 @@
 <%= "#{@room.student.first_name}とのDM" if teacher_signed_in?%>
 <%= "#{@room.teacher.first_name}とのDM" if student_signed_in?%>
 <br>
+<br>
 <% @room.chats.each do |chat| %>
+  <%= chat.room.teacher.first_name %>
+  <br>
   <%= chat.message %>
+  <br>
+  <br>
 <% end %>
 <br>
 <%= form_with model: [@room, @chat] , local: true do |f| %>

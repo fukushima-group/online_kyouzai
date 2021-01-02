@@ -1,7 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
   // 商品出品・編集のフォームを取得
   const testForm = document.querySelector(".test-content");
-  console.log(testForm)
   // 商品出品・編集のフォームがないなら実行せずここで終了
   if (!testForm) return null;
   const image_limits = 5;
@@ -78,7 +77,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 指定したdata-indexを持つプレビューとfile_fieldを削除する
   const deleteImage = (dataIndex) => {
-    console.log("test2")
     const previewWrapper = document.querySelector(
       `.preview[data-index="${dataIndex}"]`
     );
@@ -90,13 +88,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // 画像の枚数が最大のときに削除ボタンを押したらfile_fieldを1つ追加しておく
     const image_count = document.querySelectorAll(".preview").length;
-    console.log("image_count:", image_count);
     if (image_count == image_limits - 1) buildNewFileField();
   };
 
   // 画像のfile_fieldの内容が変化（新しく選択、もしくは消える）したら発火するイベントで行われる処理
   const changedFileField = (e) => {
-    console.log("test1")
     // data-index（何番目を操作しているか）を取得
     const dataIndex = e.target.getAttribute("data-index");
 
@@ -126,7 +122,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // 画像の枚数制限に引っかからなければ新しいfile_fieldを追加する
     const image_count = document.querySelectorAll(".preview").length;
-    console.log("image_count:", image_count);
     if (image_count < image_limits) buildNewFileField();
   };
 
@@ -134,8 +129,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const fileField = document.querySelector(
     'input[type="file"][name="test[images][]"]'
   );
-    console.log(fileField) 
-    console.log("test")
 
   // 画像のfile_fieldの内容が変化（新しく選択、もしくは消える）したら発火するイベント
   fileField.addEventListener("change", changedFileField);

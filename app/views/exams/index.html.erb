@@ -13,6 +13,10 @@
     <%= link_to "削除", exam_path(exam), method: :delete, data: { disable_with: '削除中...' }, data: {confirm: "試験を削除しますか？"} %>
   <% end %>
   <br>
+  作成日：<%= exam.created_at.strftime("%Y年%m月%d日") %>
+  <br>
+  テスト作成者：<%= exam.teacher.first_name %>
+  <br>
   <% if exam.records.find_by(student_id: current_student).present? %>
     <%= "あなたはこの試験を#{exam.records.find_by(student_id: current_student).created_at.strftime("%Y年%m月%d日")}に実施しました"%>
     結果：<%= exam.records.find_by(student_id: current_student).score %>点
