@@ -1,41 +1,52 @@
+<%= render "shared/header" %>
+
+<div class="top-contents">
 <%= link_to :root do %>
-  <button>トップへ戻る</button>
+  <button class="back-btn">トップへ戻る</button>
 <% end %>
 <br>
-<%= "ログイン先生：#{current_teacher.first_name}" if current_teacher.present? %>
-<br>
-<%= "問題を作成した先生：#{@exam.teacher.first_name}" %>
-<% if current_student.present? %>
-  <%= "生徒氏名：#{current_student.first_name}" %>
-<% end %>
-<br>
-<br>
-試験名：<%= @exam.name %>
-<br>
-学年・教科：<%= @exam.unit.root.name %>
-<br>
-大単元：<%= @exam.unit.parent.name %>
-<br>
-小単元：<%= @exam.name %>
-<br>
-<br>
-<%= link_to "問題を追加", new_exam_test_path if teacher_signed_in? %>
-<br>
-<br>
-<% @tests.each_with_index do |test, i| %>
-  <%= "第#{i + 1 }問"%>
-  <% if teacher_signed_in? %>
-    <%= link_to "問題の編集", edit_exam_test_path(@exam.id, test.id) %>
-    <%= link_to "問題の削除", exam_test_path(@exam.id, test.id), method: :delete, data: {confirm: "問題を削除しますか？"} %>
-  <% end %>
+<div class="exams-index">
+  <%= "ログイン先生：#{current_teacher.first_name}" if current_teacher.present? %>
   <br>
-  <% test.images.each do |image| %>
-    <%= image_tag(image, width:400) %>
-  <% end %>
+  <%= "問題を作成した先生：#{@exam.teacher.first_name}" %>
   <br>
-  <%= test.question %>
+  <%= "生徒氏名：#{current_student.first_name}" if current_student.present?%>
+</div>
+<br>
+<ul class="exams-lists">
+  試験名：<%= @exam.name %>
   <br>
-  <%= test.answer %>
+  学年・教科：<%= @exam.unit.root.name %>
+  <br>
+  大単元：<%= @exam.unit.parent.name %>
+  <br>
+  小単元：<%= @exam.name %>
   <br>
   <br>
-<% end %>
+  <%= link_to "問題を追加", new_exam_test_path if teacher_signed_in? %>
+  <br>
+  <br>
+  <% @tests.each_with_index do |test, i| %>
+    <li class="exam-content">
+      <%= "第#{i + 1 }問"%>
+      <% if teacher_signed_in? %>
+        <%= link_to "問題の編集", edit_exam_test_path(@exam.id, test.id) %>
+        <%= link_to "問題の削除", exam_test_path(@exam.id, test.id), method: :delete, data: {confirm: "問題を削除しますか？"} %>
+      <% end %>
+      <br>
+      <% test.images.each do |image| %>
+        <%= image_tag(image, width:400) %>
+      <% end %>
+      <br>
+      【問題】
+      <br>
+      <%= test.question %>
+      <br>
+      【解答】
+      <br>
+      <%= test.answer if teacher_signed_in?%>
+      <br>
+      <br>
+    <% end %>
+  </li>
+</ul>

@@ -1,29 +1,49 @@
-<%= link_to :back do %>
-  <button>戻る</button>
-<% end %>
-<br>
-<h1>生徒情報</h1>
-<%= link_to 'プロフィール編集', student_profile_edit_path %>
-<br>
-<%= link_to '面談内容一覧', "/students/#{current_student.id}/interviews" %>
-<br>
-<%= link_to "#{current_student.teacher.first_name}とDMへ", rooms_path(@student.teacher.id) %>
-<br>
-<h3>苗字</h3>
-<%= @student.first_name %>
-<h3>名前</h3>
-<%= @student.last_name %>
-<h3>苗字（フリガナ）</h3>
-<%= @student.first_name_kana%>
-<h3>名前（フリガナ）</h3>
-<%= @student.last_name_kana %>
-<h3>メールアドレス</h3>
-<%= @student.email %>
-<h3>苗字</h3>
-<%= @student.school_year.name %>
-<h3>名前</h3>
-<%= @student.club.name %>
-<h3>苗字（フリガナ）</h3>
-<%= @student.purpose%>
-<h3>名前（フリガナ）</h3>
-<%= @student.teacher.first_name %>
+<div class="top-contents">
+  <%= link_to :back do %>
+    <button>戻る</button>
+  <% end %>
+  <div class="profile-content">
+    <h1>【生徒情報】</h1>
+    <%= link_to 'プロフィール編集', student_profile_edit_path %>
+    <br>
+    <%= link_to '面談内容一覧', "/students/#{current_student.id}/interviews" %>
+    <br>
+    <%= link_to "#{current_student.teacher.first_name}とDMへ", rooms_path(@student.teacher.id) %>
+    <br>
+    <br>
+    <h3>【苗字】</h3>
+    <%= @student.first_name %>
+    <br>
+    <br>
+    <h3>【名前】</h3>
+    <%= @student.last_name %>
+    <br>
+    <br>
+    <h3>【苗字（フリガナ）】</h3>
+    <%= @student.first_name_kana%>
+    <br>
+    <br>
+    <h3>【名前（フリガナ）】</h3>
+    <%= @student.last_name_kana %>
+    <br>
+    <br>
+    <h3>【メールアドレス】</h3>
+    <%= @student.email %>
+    <br>
+    <br>
+    <h3>【苗字】</h3>
+    <%= @student.school_year.name %>
+    <br>
+    <br>
+    <h3>【名前】</h3>
+    <%= @student.club.name %>
+    <br>
+    <br>
+    <h3>【苗字（フリガナ）】</h3>
+    <%= @student.purpose%>
+    <br>
+    <br>
+    <h3>【名前（フリガナ）】</h3>
+    <%= @student.teacher.first_name %>
+  </div>
+</div>
