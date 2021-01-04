@@ -1,3 +1,106 @@
-// Place all the styles related to the exams controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.top-lists {
+  padding-top: 5px;
+  background-color: rgb(203, 243, 255);
+}
+
+.back-btn {
+  margin: 10px;
+}
+
+.top-lists-btn {
+  color: #fff;
+  background-color: #eb6100;
+  margin: 5px;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.top-lists-btn:hover {
+  color: #fff;
+  background: #f56500;
+  margin: 5px;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.top-contents {
+  height: 100%;
+  width: 100vw;
+  background-color: rgb(203, 243, 255);
+}
+
+.top-contents-new {
+  height: 97vh;
+  width: 100vw;
+  background-color: rgb(203, 243, 255);
+}
+
+.exams-lists {
+  margin-left: 10vw;
+  margin-right: 20vw;
+  padding-bottom: 5vh;
+}
+
+.exams-index {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.exam-content {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 5px;
+  border: solid;
+  border-radius: 8px;
+}
+
+.exam-content-btn {
+  color: #fff;
+  background-color: #9dc4ff;
+  margin: 5px;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.exam-student-lists {
+  color: #fff;
+  background-color: #9dc4ff;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.exam-lists {
+  color: #fff;
+  background-color: #9dc4ff;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.field {
+  margin: 10px;
+}
+
+#unit_field {
+  margin: 10px;
+}
+
+.actions {
+  margin: 10px;
+}
+
+.exam-content {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 5px;
+  border: solid;
+  border-radius: 8px;
+}

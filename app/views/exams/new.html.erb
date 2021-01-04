@@ -1,6 +1,14 @@
-<h2>試験問題の新規作成する</h2>
-<%= link_to :root do %>
-  <button>戻る</button>
-<% end %>
-<br>
-<%= render 'form', exam: @exam %>
+<%= render "shared/header" %>
+
+<div class="top-contents-new">
+  <%= link_to :root do %>
+    <button class="back-btn">戻る</button>
+  <% end %>
+  <div class="exams-index">
+    <h2>試験問題の新規作成する</h2>
+  </div>
+  <br>
+  <div class="exams-lists">
+    <%= render 'form', exam: @exam %>
+  </div>
+</div>

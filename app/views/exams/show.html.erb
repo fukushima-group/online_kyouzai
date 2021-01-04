@@ -1,14 +1,24 @@
-<%= link_to :root do %>
-  <button>戻る</button>
-<% end %>
-<h3>試験名</h3>
-<%= @exam.name %>
-<br>
-<h3>この試験を受けた生徒一覧</h3>
-<% @exam.records.each do |record|%>
-  <%= record.student.school_year.name %>
-  <%= record.student.first_name %>
-  <%= record.score %>点
-  <%= record.created_at.strftime("%Y年%m月%d日")%>に実施しました
-  <br>
-<% end %> 
+<%= render "shared/header" %>
+
+<div class="top-contents">
+  <%= link_to :root do %>
+    <button class="back-btn">戻る</button>
+  <% end %>
+  <div class="exams-index">
+    <h3>試験名</h3>
+    <%= @exam.name %>
+  </div>
+  <ul class="exams-lists">
+    <br>
+    <h3>この試験を受けた生徒一覧</h3>
+    <% @exam.records.each do |record|%>
+      <li class="exam-content">
+        <%= record.student.school_year.name %><br>
+        <%= record.student.first_name %><br>
+        <%= record.score %>点<br>
+        <%= record.created_at.strftime("%Y年%m月%d日")%>に実施しました<br>
+        <br>
+      </li>
+    <% end %>
+  </ul>
+</div>
